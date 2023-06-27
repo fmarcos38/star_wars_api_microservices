@@ -1,3 +1,7 @@
-module.exports = (req, res) => {
-    res.status(200).send("crea perso");
+const film =require("../data");
+const { response } = require("../utils");
+
+module.exports = async (req, res) => {
+    const newFilms = await film.createFilm();
+    response(res, 201, newFilms);
 };

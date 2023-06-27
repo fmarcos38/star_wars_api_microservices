@@ -7,7 +7,7 @@ server.use(morgan("dev"));
 server.use(express.json());
 
 //import el index de las rutas
-server.use(require("./routes"));
+server.use("/planets", require("./routes"));
 
 
 module.exports = server;
