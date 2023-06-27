@@ -9,5 +9,18 @@ server.use(express.json());
 //import el index de las rutas
 server.use("/planets", require("./routes"));
 
+//sino encuentra endpoint
+server.use("*", (req, res) => {
+    res.status(404).send("Not found");
+});
+
+//para poder sobreEscribir el manejador de errores de express
+server.use((err, req, res, next) => {
+    res.status(err.statusCode  || 500).send({
+        error: true,
+        message: err.message,
+    });
+});
+
 
 module.exports = server;
