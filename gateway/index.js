@@ -7,17 +7,17 @@ app.use(morgan("dev"));
 
 //rutas para c/microservicio
 app.use("/characters", createProxyMiddleware({
-    target: "http://localhost:8001",
+    target: "http://characters:8001",   //cambié de localhost a characters(q es el nombre de dicho doker).
     changeOrigin: true,
 }));
 
-app.use("/films", createProxyMiddleware({
-    target: "http://localhost:8002",
+app.use("/films", createProxyMiddleware({ 
+    target: "http://films:8002",    //cambié de localhost a characters(q es el nombre de dicho doker).
     changeOrigin: true,
 }));
 
 app.use("/planets", createProxyMiddleware({
-    target: "http://localhost:8003",
+    target: "http://planets:8003",    //cambié de localhost a characters(q es el nombre de dicho doker).
     changeOrigin: true,
 }));
 
