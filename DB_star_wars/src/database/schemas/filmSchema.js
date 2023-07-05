@@ -9,12 +9,29 @@ const filmSchema = new Schema({
     release_date: String,
     characters: [{
         type: String,
-        ref: "Character"
+        ref: "characters"
     }],
     planets: [{
         type: String,
-        ref: "Planet"
+        ref: "planets"
     }]
 });
+
+//metodos
+filmSchema.statics.list = async function(){
+    return await this.find()
+        .populate("characters", ["_id", "name"])
+        .populate("planets", ["_id", "name"]);
+};
+
+filmSchema.static.get = async function(id){
+    return await this.findOne({id})
+    .populate("characters", ["_id", "name"])
+    .populate("planets", ["_id", "name"]);
+};
+
+filmSchema.statics.insert = async function(film){
+    return await this.create(film);
+};
 
 module.exports = filmSchema; 
