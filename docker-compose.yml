@@ -32,6 +32,6 @@ services:
   dbstarwars:
     container_name: dbstarwars
     restart: always
-    build: ./dbStarwars
+    build: ./dbstarwars
     ports:
       - "8004:8004"
